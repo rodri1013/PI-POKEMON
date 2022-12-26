@@ -89,15 +89,16 @@ const getDbPokemonInfo = async (req, res, next) =>{
 };
 
 const getAllPokemon = async (req, res, next) =>{
-  //try {
+  try {
     const apiInfo = await getAllPokemonApi();
     const dbInfo = await getDbPokemonInfo();
     const wholeInfo = await apiInfo.concat(dbInfo);
     return wholeInfo;
-  //} catch (error) {
-    //next (error);
+  } catch (error) {
+    next (error);
     //return ('Fatal error');
-  //};
+    //console.error(error);
+  };
 };
 
 
