@@ -1,0 +1,27 @@
+.logo {
+  width:140px;
+  float: left;
+  margin-left: 10px;
+  /* margin-bottom: 30px; */
+  transform: translate(0px,-18px)
+  /* img: url(../assets/pokelogo.png); */
+}
+
+.created {
+  float: right;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-size: 35px;
+  color: white;
+  font-family: 'Rancho', cursive;
+  transition-duration: 0.4s
+}
+.created:hover{
+  color: rgba(196, 168, 224, 0.938);
+}
+
+.header {
+  overflow: hidden;
+  height: 70px;
+  background-color: #290035;
+}

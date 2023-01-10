@@ -1,0 +1,81 @@
+/* .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.number {
+  margin-left: 10px;
+  align-items: center;
+  display: inline;
+  padding: 8px;
+  }
+
+.button {
+  background-color: rgb(226, 222, 226);
+  border-radius: 20%;
+  transition-duration: 0.3s;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.button:focus
+{outline:none }
+
+.button:hover {
+  cursor:pointer;
+  background-color: #640482 ;
+  color: rgb(255, 255, 255)
+} */
+
+.paginationContainer{
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 2rem;
+  
+}
+
+
+.Pagination{
+  margin-left: -10px;
+  background-color: transparent;
+  outline: none;
+  border: 15px;
+  font-weight: bold;
+  color: rgb(188, 161, 61);
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 2rem; 
+
+}
+.PaginationActive{
+  background-color: transparent;
+  outline: none;
+  border: 15px;
+  font-weight: bold;
+  color: rgb(255, 200, 0);
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  margin-bottom: 2rem; 
+}
+
+
+.Pagination:hover{
+  color: rgb(49, 49, 49); 
+} 
+.PaginationActual{
+  background-color: black;
+  color: azure;
+}
