@@ -66,8 +66,8 @@ router.post('/', async (req, res, next) => {
      return res.status(201).send('Pokemon created successfully');
     }
   } catch (error) {
-    //res.status(400).send('Error in data, please check');
     next(error);
+    //res.status(400).send('Types is empty')
   }
 });
 

@@ -14,21 +14,22 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: {
         args: true,
-        msg: 'Name already exists',
+        msg: 'name already exists',
       },
       validate: {
         notNull:{
           args: true,
           msg: 'name attribute is missing'
        },
-      notEmpty: {
-        args: true,
-        msg: "name must be provided"
-        },
-      isAlpha: {
-        args: true,
-        msg: 'name must contains letters only'
-      }
+        notEmpty: {
+          args: true,
+          msg: 'name must be provided'
+          },
+        is: /^[a-z-]{1,20}$/
+      // isAlpha: {
+      //   args: true,
+      //   msg: 'name must contains letters only'
+      // }
     },
       set(value) {
         this.setDataValue('name', value.toLowerCase());
@@ -41,6 +42,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'hp attribute is missing'
+        },
+        min: 1,
+        max: 250,
+        validator(value) {
+          if(value < 1 || value > 250) {
+            throw new Error ('hp must be between 1 and 250');
+          }
         }
       }
     },
@@ -51,6 +59,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'attack attribute is missing'
+        },
+        min: 1,
+        max: 250,
+        validator(value) {
+          if(value < 1 || value > 250) {
+            throw new Error ('attack must be between 1 and 250');
+          }
         }
       }
     },
@@ -61,6 +76,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'defense attribute is missing'
+        },
+        min: 1,
+        max: 250,
+        validator(value) {
+          if(value < 1 || value > 250) {
+            throw new Error ('defense must be between 1 and 250');
+          }
         }
       }
     },
@@ -71,6 +93,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'speed attribute is missing'
+        },
+        min: 1,
+        max: 250,
+        validator(value) {
+          if(value < 1 || value > 250) {
+            throw new Error ('speed must be between 1 and 250');
+          }
         }
       }
     },
@@ -81,6 +110,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'height attribute is missing'
+        },
+        min: 1,
+        max: 100,
+        validator(value) {
+          if(value < 1 || value > 100) {
+            throw new Error ('height must be between 1 and 100');
+          }
         }
       }
     },
@@ -91,6 +127,13 @@ module.exports = (sequelize) => {
         notNull: {
           args: true,
           msg: 'weight attribute is missing'
+        },
+        min: 1,
+        max: 1000,
+        validator(value) {
+          if(value < 1 || value > 1000) {
+            throw new Error ('weight must be between 1 and 1000');
+          }
         }
       }
     },
@@ -119,3 +162,4 @@ module.exports = (sequelize) => {
     }
   });
 };
+

@@ -1,5 +1,4 @@
 const axios = require('axios');
-const e = require('express');
 const { Type } = require('../db.js');
 const UrlPokemonApiType = 'https://pokeapi.co/api/v2/type' ;
 //const header = {headers:{'Accept-Encoding': 'identity'}};

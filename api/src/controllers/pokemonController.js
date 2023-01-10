@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Pokemon, Type } = require('../db.js');
-const UrlPokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=50'
+const UrlPokemonApi = 'https://pokeapi.co/api/v2/pokemon?limit=40'
 
 
 // async function getAllPokemonApi(req, res, next) {
@@ -23,10 +23,11 @@ const getAllPokemonApi = async(req, res, next)=> {
         hp: pokeApiDetail.data.stats[0].base_stat,
         attack: pokeApiDetail.data.stats[1].base_stat,
         defense: pokeApiDetail.data.stats[2].base_stat,
-        speed: pokeApiDetail.data.stats[3].base_stat,
+        speed: pokeApiDetail.data.stats[5].base_stat,
         height: pokeApiDetail.data.height,
         weight: pokeApiDetail.data.weight,
         image: pokeApiDetail.data.sprites.other.dream_world.front_default,
+        //image: pokeApiDetail.data.sprites.other.home.front_default,
         types: pokeApiDetail.data.types.map((t) =>  t.type.name),
         createdInDb: false,
       };
