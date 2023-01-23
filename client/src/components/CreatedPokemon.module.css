@@ -1,21 +1,23 @@
 *{box-sizing:border-box;}
-.container{
+ /* .background {
 	background-image: url('https://i.pinimg.com/474x/5d/50/46/5d5046d5721deaac4c38e0e9315a6ab1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 	height: 100%;
 	width: 100%;
-}
+}  */
+
 .form {
+	margin-top: 5rem;
   width:300px;
 	height: 660x;
 	padding: 15px;
-	margin: 0px;
 	background:rgba(64, 1, 136, 0.411);
 	margin-left: auto;
 	margin-right:auto;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.438);
+	border-radius: 20px;
 }
 .input{
 	outline: none;
@@ -48,18 +50,18 @@ label {
 }
 
 
-.bottom{
+.buttons{
 	background-color: rgb(26, 0, 51);
 	border-radius: 5px;
 	padding: 8px;
 	color: rgb(243, 231, 255) ;
-	margin-left: auto;
+	margin-left: aut;
 	margin-right: auto;
 	margin-top: 12px;
-	cursor:pointer
+	cursor:pointer;
 }
 
-.atras{
+.back{
 	background-color: rgb(26, 0, 51);
 	border-radius: 5px;
 	color: rgb(243, 231, 255) ;
@@ -72,3 +74,64 @@ button{
 	align-content: center;
 	margin-top: 5px;	
 }
+/* .disabled {
+	opacity: 0.5;
+  pointer-events: none;
+} */
+
+.select{
+	font-family:  Geneva, Tahoma, sans-serif;
+	font-size: 14px;
+	color: purple;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.6rem;
+	overflow: scroll;
+	height: 2rem;
+	position: relative;
+	top: 0;
+	z-index: 1;
+	padding-left: 15px;
+	border-radius: 10px;
+}
+.selected-types {
+	color: rgb (26, 0 , 51);
+  display: flex;
+  flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-right: 2rem;
+	
+}
+
+.selected-type {
+	font-family:  Geneva, Tahoma, sans-serif;
+	color: purple;
+	font-size: 15px;
+  background: white;
+  padding: 0.5rem 0.5rem;
+  border-radius: 10px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+  display: flex;
+	height: 2rem;
+}
+
+.selected-type button {
+  background: transparent;
+  border: none;
+	border-radius: 40%;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.5rem;
+	margin-bottom: 0.3rem;
+  color: rgb (26, 0 , 51);
+	align-items: center;
+	justify-content: center;
+	color: purple;
+}
+
+/* .selected-type button:hover {
+  color: #333;
+} */

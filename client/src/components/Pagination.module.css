@@ -1,4 +1,4 @@
-/* .pagination {
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@
   }
 
 .button {
-  background-color: rgb(226, 222, 226);
+  background-color:rgb(221, 4, 221);
   border-radius: 20%;
   transition-duration: 0.3s;
   width: 30px;
@@ -27,55 +27,12 @@
 
 .button:hover {
   cursor:pointer;
-  background-color: #640482 ;
-  color: rgb(255, 255, 255)
-} */
-
-.paginationContainer{
-  font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  margin-bottom: 2rem;
-  
-}
-
-
-.Pagination{
-  margin-left: -10px;
-  background-color: transparent;
-  outline: none;
-  border: 15px;
-  font-weight: bold;
-  color: rgb(188, 161, 61);
-  font-size: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  margin-bottom: 2rem; 
-
-}
-.PaginationActive{
-  background-color: transparent;
-  outline: none;
-  border: 15px;
-  font-weight: bold;
-  color: rgb(255, 200, 0);
-  font-size: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  margin-bottom: 2rem; 
-}
-
-
-.Pagination:hover{
-  color: rgb(49, 49, 49); 
+  background-color: yellow ;
+  /* color: rgb(221, 4, 221)*/
 } 
-.PaginationActual{
-  background-color: black;
-  color: azure;
+
+.active {
+  background-color: blue;
+  color:aquamarine
 }
+

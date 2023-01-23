@@ -1,21 +1,26 @@
 
 .card {
-  background-image: url('https://i.pinimg.com/474x/95/ac/1b/95ac1b8fe647a105e38e8e22a07119ec.jpg');
+  background-image: url('../assets/cardback.jpg');
+  /* background: linear-gradient(#08aeea, #2af598); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* background: rgba(86, 7, 242, 0.87); */
   margin: 35px;
   width: 17rem;
+  min-height: 150px;
   border-radius: 10px;
   display: inline-block;
   box-sizing: content-box;
-  min-height: 150px;
   border-color: #22043dda;
   border-width: 1.5px;
   border-style: solid;
 }
 
+.card:hover {
+  opacity: 0.8;
+}
+
+/* font-family: 'Lobster', cursive; */
 .name {
   text-align: center;
   font-family: 'Hoefler Text', cursive;
@@ -28,7 +33,7 @@
   0 0 60px #e60073, 0 0 70px #e60073, 0 0 80px #e60073;
 }
 
-.img{
+.img {
   width: 180px;
   height: 180px;
   display: block;
@@ -38,12 +43,13 @@
 .typeStyle {
   font-size: 1.5rem;
   list-style-type: none;
-  color: #2e023b;
+  color: #1d0218;
   text-decoration-line: none;
   display: inline;
   padding-left: 3px;
   padding-right: 3px;
-  font-family: 'papyrus', cursive;
+  font-family: 'Merienda', cursive;
+  font-weight: bold;
 }
 
 ul li {

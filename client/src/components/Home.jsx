@@ -7,14 +7,14 @@ import {
   filterPokemonType,
   filterPokemonCreated,
   filterPokemonAttack,
-  orderPokemonName,
-} from '../redux/actions';
+  orderPokemonName } from '../redux/actions';
 import { Link } from 'react-router-dom';
 import CardPokemon from './CardPokemon';
 import styles from './Home.module.css';
 import Pagination from './Pagination';
 import Search from './Search';
 import NavBar from './NavBar';
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function Home() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonPerPage /*setPokemonPerPage*/] = useState(12);
-  const [, /*order*/ setOrder] = useState('');
+  const [order,setOrder] = useState('');
 
   const indexOfLastPokemon = currentPage * pokemonPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage;
@@ -33,7 +33,6 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
-  
 
   useEffect(() => {
     dispatch(getPokemon());
@@ -52,64 +51,64 @@ export default function Home() {
     e.preventDefault();
     dispatch(filterPokemonType(e.target.value));
     setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`); 
+    setOrder(e.target.value); 
   };
 
   const handleFilterCreated = (e) => {
     e.preventDefault();
     dispatch(filterPokemonCreated(e.target.value));
     setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`); 
+    setOrder(e.target.value); 
   };
 
   const handleFilterAttack = (e) => {
     e.preventDefault();
     dispatch(filterPokemonAttack(e.target.value));
     setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`); 
+    setOrder(e.target.value); 
   };
 
 //this set a state so we can perform the Order.
   const handleOrderName = (e) => {
     e.preventDefault();
     dispatch(orderPokemonName(e.target.value));
+    setOrder(e.target.value); 
     setCurrentPage(1);
-    setOrder(`Order ${e.target.value}`); 
   };
+
 
   return (
     <div>
       <NavBar />
-      <Search className={styles.seach} />
-      <div className={styles.home}>
-        {/* <h1 className= {styles.h1} >WELCOME TO POKEMON'S WORLD</h1> */}
+      <Search />
+      <div >
+        <div>
         <button
           className={styles.button}
-          onClick={(e) => {handleClick(e)}}
-        >
+          onClick={(e) => {handleClick(e)}}>
           Pokemon come back!!
         </button>
-        <div>
-          <select onChange={(e) => handleOrderName(e)}>
-            <option value='name'>Sort Name</option>
+          <select className={styles.name} onChange={(e) => handleOrderName(e)} value={order}>
+            <option value='name'>Name</option>
             <option value='asc'>A-Z</option>
             <option value='desc'>Z-A</option>
           </select>
-          <select onChange={(e) => handleFilterAttack(e)}>
+          <select onChange={(e) => handleFilterAttack(e)} value={order}>
             <option value='attack'>Attack</option>
             <option value='more aggressive'>More Aggressive</option>
             <option value='less aggresive'>Less Aggressive</option>
           </select>
-          <select onChange={(e) => handleFilterType(e)}>
+          <select onChange={(e) => handleFilterType(e)} value={order}>
             <option value='type'>Type</option>
-            {allPokemonType?.map((t) => (<option value={t.name} key={t.id}>
+            {/* {allPokemonType?.sort((a, b) => (a.name > b.name ? 1 : -1)).map((t) => (<option value={t.name} key={t.id}> */}
+              {allPokemonType?.sort((a, b) => a.name.localeCompare(b.name)).map((t) => (<option value={t.name} key={t.id}>
               {`${t.name.charAt(0).toUpperCase() + t.name.slice(1)}`}
-            </option>))} 
+            </option>))}
           </select>
-          <select onChange={(e) => handleFilterCreated(e)}>
+          <select onChange={(e) => handleFilterCreated(e)} value={order}>
             <option value='all'>All</option>
-            <option value='created'>Created</option>
             <option value='existent'>Existent</option>
+            <option value='created'>Created</option>
           </select> 
           <Pagination
             pokemonPerPage={pokemonPerPage}
@@ -120,7 +119,7 @@ export default function Home() {
           {currentPokemon?.map((p) => {
             return (
               <Fragment>
-                <Link to={'/home/' + p.id}>
+                <Link to={`/home/${p.id}`}>
                   <CardPokemon
                     name={p.name}
                     image={p.image}

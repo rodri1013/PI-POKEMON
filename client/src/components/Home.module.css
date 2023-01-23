@@ -3,8 +3,30 @@ div select {
   border-radius: 4px;
   padding: 7px;
   margin-top: 10px;
-  border: none !important;
+  border: none;
   background-color: rgb(255, 255, 255);
   color: #31073d;
   outline: none;
+
+}
+
+.button {
+  margin-left: 50px;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  background-color: rgb(221, 4, 221);
+  color: #31073d;
+  outline: none;
+}
+
+.button:hover {
+  cursor:pointer;
+  background-color: #640482 ;
+  color: rgb(255, 255, 255)
+}
+
+.name {
+  
 }
