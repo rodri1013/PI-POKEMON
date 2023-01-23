@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { Type } = require('../db.js');
 const UrlPokemonApiType = 'https://pokeapi.co/api/v2/type' ;
-//const header = {headers:{'Accept-Encoding': 'identity'}};
+
 
 async function getAllTypeApi(req, res, next) {
   try{
@@ -9,7 +9,7 @@ async function getAllTypeApi(req, res, next) {
     getApiTypes.forEach((type) => {
       Type.findOrCreate({
         where: { 
-          name: type.name,
+          name: type.name
         },
       });
     });
@@ -19,7 +19,24 @@ async function getAllTypeApi(req, res, next) {
   }
 };
 
+// const getAllTypeApi = async() => {
+  
+//     let getApiTypes = (await axios.get(UrlPokemonApiType).data.results);
+//     getApiTypes = getApiTypes.map(t => t.name);
+//     getApiTypes.forEach (type => {
+//       Type.findOrCreate({
+//         where: {
+//           name: type
+//         }
+//       })
+//     })
+//   return await Type.findAll();
+// }
+//B
+
+
+
 
 module.exports = {
   getAllTypeApi
-};
+}

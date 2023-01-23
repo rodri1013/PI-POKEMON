@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     name: {
@@ -49,7 +50,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 250) {
             throw new Error ('hp must be between 1 and 250');
           }
-        }
+        },
+        //is: /^([1-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|250)$/
       }
     },
     attack: {
@@ -66,7 +68,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 250) {
             throw new Error ('attack must be between 1 and 250');
           }
-        }
+        },
+        // is: /^([1-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|250)$/
       }
     },
     defense: {
@@ -83,7 +86,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 250) {
             throw new Error ('defense must be between 1 and 250');
           }
-        }
+        },
+        //is: /^([1-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|250)$/
       }
     },
     speed: {
@@ -100,7 +104,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 250) {
             throw new Error ('speed must be between 1 and 250');
           }
-        }
+        },
+        //is: /^([1-9]{1,2}|1[0-9]{1,2}|2[0-4][0-9]|250)$/
       }
     },
     height: {
@@ -117,7 +122,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 100) {
             throw new Error ('height must be between 1 and 100');
           }
-        }
+        },
+        //is: /^([1-9]\d{0,1}|100)$/
       }
     },
     weight: {
@@ -134,7 +140,8 @@ module.exports = (sequelize) => {
           if(value < 1 || value > 1000) {
             throw new Error ('weight must be between 1 and 1000');
           }
-        }
+        },
+        //is: /^([1-9]\d{0,2}|1000)$/
       }
     },
     image: {
@@ -149,10 +156,11 @@ module.exports = (sequelize) => {
           args: true,
           msg: 'url must be provided'
           },
-        isUrl: {
-          args: true,
-          msg: 'invalid url'
-        }
+        // isUrl: {
+        //   args: true,
+        //   msg: 'invalid url'
+        // }
+        is: /(http|https?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)/
       }
     },
     createdInDb: {

@@ -9,8 +9,8 @@ router.get('/', async (req, res, next) => {
     const { name } = req.query;
     const pokemonApiDb = await getAllPokemon(); 
     if (name) { //Check if name is inside the const.
-      const pokemonName = await pokemonApiDb.filter((el) => 
-        el.name.toLowerCase().includes(name.toLowerCase())
+      const pokemonName = await pokemonApiDb.filter((n) => 
+        n.name.toLowerCase().includes(name.toLowerCase())
       );
       pokemonName.length
         ? res.status(200).send(pokemonName)
@@ -40,9 +40,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const {name, hp, attack, defense, speed, height, weight, types, image, createdInDb} = req.body;
-    const newPokemon = await Pokemon.create({
-      //name: name.toLowerCase(),
+    let {name, hp, attack, defense, speed, height, weight, types, image, createdInDb} = req.body;
+    let pokemonCreated = await Pokemon.create({
       name,
       hp,
       attack,
@@ -53,21 +52,32 @@ router.post('/', async (req, res, next) => {
       image,
       createdInDb,
     });
-    // const exist = await Pokemon.findOne({ where: { name: name } });
-    //   if (exist) {return res.json({ info: "Name already exists" })}
-    //if (!name) return res.json({ Attention: ' Name must be provided' });//Only if name is empty
-    if(Array.isArray(types) && types.length){ 
-      const dbTypes = await Promise.all( //variable with a promise all resolution.
-        types.map((type) => { //check data by mapping and looking for matching data in our database.
-          return Type.findOne({where:{ name: type}}) 
-        })
-      )
-     await newPokemon.setTypes(dbTypes) //Once promise Pokemon.create is resolved we add the type.
-     return res.status(201).send('Pokemon created successfully');
-    }
+    let typesDb = await Type.findAll({ where: { name: types } });
+    pokemonCreated.addType(typesDb);
+    res.status(201).send('Pokemon created successfully');
+    
   } catch (error) {
     next(error);
-    //res.status(400).send('Types is empty')
+  }
+});
+
+
+router.delete("/:id", async  (req, res, next) => {
+  try {
+      const { id } = req.params;
+      let pokemonsTotal = await getAllPokemon();
+      if (id){
+          let pokemonId = await pokemonsTotal.filter(e => e.id == id);
+          await Pokemon.destroy({
+              where: {id: id}
+          })
+          pokemonId.length?
+          res.status(200).send(pokemonId) :
+          res.status(404).send('Pokemon not found!');
+      }
+      pokemonsTotal = pokemonsTotal.filter(e => e.id != id)
+  } catch (error) {
+      next(error)
   }
 });
 
